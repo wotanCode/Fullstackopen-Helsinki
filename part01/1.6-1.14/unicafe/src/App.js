@@ -1,6 +1,16 @@
 import React, {useState} from "react"
 import "./App.css";
 
+const Statistics = (props) => {
+  //Destructuramos el props
+  const {nombre, calculo} = props
+  return(
+  <>
+    <p><b>{nombre}</b> {calculo}</p>
+  </>
+  );
+}
+
 function App() {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
@@ -27,13 +37,14 @@ function App() {
       <button onClick={() => handleGood()}>Good</button>
       <button onClick={() => handleNeutral()}>Neutral</button>
       <button onClick={() => handleBad()}>Bad</button>
+
       <h2>Statitics</h2>
-      <p><b>good</b> {good}</p>
-      <p><b>neutral</b> {neutral}</p>
-      <p><b>bad</b> {bad}</p>
-      <p><b>All</b> {good+neutral+bad}</p>
-      <p><b>Average</b> {(good-bad)/(good+bad+neutral)}</p>
-      <p><b>Positive</b>{good/(good+bad+neutral)*100}</p>
+      <Statistics nombre="Good" calculo={good}/>
+      <Statistics nombre="Neutral" calculo={neutral}/>
+      <Statistics nombre="Bad" calculo={bad}/>
+      <Statistics nombre="All" calculo={good+neutral+bad}/>
+      <Statistics nombre="Average" calculo={(good-bad)/(good+bad+neutral)}/>
+      <Statistics nombre="Positive" calculo={good/(good+bad+neutral)*100}/>
     </div>
   );
 }
