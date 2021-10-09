@@ -22,12 +22,16 @@ const Statistics = (props) => {
   } else {
     return(
     <>
+      <table>
+        <tbody>
           <Statistic nombre="Good" calculo={good}/>
           <Statistic nombre="Neutral" calculo={neutral}/>
           <Statistic nombre="Bad" calculo={bad}/>
           <Statistic nombre="All" calculo={good+neutral+bad}/>
           <Statistic nombre="Average" calculo={(good-bad)/(good+bad+neutral)}/>
           <Statistic nombre="Positive" calculo={good/(good+bad+neutral)*100}/>
+        </tbody>
+      </table>
     </>
     )
   }
@@ -36,7 +40,10 @@ const Statistics = (props) => {
 //Aqui lo hice sin desestructurar el componente
 const Statistic = (props) => {
   return(
-    <p><b>{props.nombre}</b> {props.calculo}</p>
+    <tr>
+      <td><b>{props.nombre}</b></td>
+      <td>{props.calculo}</td>
+    </tr>
   )
 }
 
@@ -73,6 +80,7 @@ function App() {
         <Statistics nomensaje={true}/>
       :
         <>
+        
           <Statistics good={good} neutral={neutral} bad={bad}/>
         </>
       }
