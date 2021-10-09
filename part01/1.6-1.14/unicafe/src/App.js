@@ -1,9 +1,18 @@
 import React, {useState} from "react"
 import "./App.css";
 
+//componente para el boton que revise el nombre del boton y la funcion como props
+const Button = (props) => {
+  const {text, handle} = props
+  return(
+    <button onClick={() => {handle()}}>{text}</button>
+  )
+}
+
+
 const Statistics = (props) => {
   //Destructuramos el props
-  const {nomensaje, nombre, calculo} = props
+  const {nomensaje, good, neutral, bad} = props
   if (nomensaje === true){
     return(
       <>
@@ -13,10 +22,22 @@ const Statistics = (props) => {
   } else {
     return(
     <>
-      <p><b>{nombre}</b> {calculo}</p>
+          <Statistic nombre="Good" calculo={good}/>
+          <Statistic nombre="Neutral" calculo={neutral}/>
+          <Statistic nombre="Bad" calculo={bad}/>
+          <Statistic nombre="All" calculo={good+neutral+bad}/>
+          <Statistic nombre="Average" calculo={(good-bad)/(good+bad+neutral)}/>
+          <Statistic nombre="Positive" calculo={good/(good+bad+neutral)*100}/>
     </>
     )
   }
+}
+
+//Aqui lo hice sin desestructurar el componente
+const Statistic = (props) => {
+  return(
+    <p><b>{props.nombre}</b> {props.calculo}</p>
+  )
 }
 
 function App() {
@@ -42,9 +63,9 @@ function App() {
   return (
     <div className="App">
       <h1>Give Feedback</h1>
-      <button onClick={() => handleGood()}>Good</button>
-      <button onClick={() => handleNeutral()}>Neutral</button>
-      <button onClick={() => handleBad()}>Bad</button>
+      <Button text="Good" handle={handleGood}/>
+      <Button text="Neutral" handle={handleNeutral}/>
+      <Button text="Bad" handle={handleBad}/>
 
       <h2>Statitics</h2>
       {/* Usamos el operador terneario para verificar, el ? es la consulta y el : es el ELSE */}
@@ -52,12 +73,7 @@ function App() {
         <Statistics nomensaje={true}/>
       :
         <>
-          <Statistics nombre="Good" calculo={good}/>
-          <Statistics nombre="Neutral" calculo={neutral}/>
-          <Statistics nombre="Bad" calculo={bad}/>
-          <Statistics nombre="All" calculo={good+neutral+bad}/>
-          <Statistics nombre="Average" calculo={(good-bad)/(good+bad+neutral)}/>
-          <Statistics nombre="Positive" calculo={good/(good+bad+neutral)*100}/>
+          <Statistics good={good} neutral={neutral} bad={bad}/>
         </>
       }
     </div>
