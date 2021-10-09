@@ -3,12 +3,20 @@ import "./App.css";
 
 const Statistics = (props) => {
   //Destructuramos el props
-  const {nombre, calculo} = props
-  return(
-  <>
-    <p><b>{nombre}</b> {calculo}</p>
-  </>
-  );
+  const {nomensaje, nombre, calculo} = props
+  if (nomensaje === true){
+    return(
+      <>
+        <h2>No Feedback given</h2>
+      </>
+    )
+  } else {
+    return(
+    <>
+      <p><b>{nombre}</b> {calculo}</p>
+    </>
+    )
+  }
 }
 
 function App() {
@@ -39,12 +47,19 @@ function App() {
       <button onClick={() => handleBad()}>Bad</button>
 
       <h2>Statitics</h2>
-      <Statistics nombre="Good" calculo={good}/>
-      <Statistics nombre="Neutral" calculo={neutral}/>
-      <Statistics nombre="Bad" calculo={bad}/>
-      <Statistics nombre="All" calculo={good+neutral+bad}/>
-      <Statistics nombre="Average" calculo={(good-bad)/(good+bad+neutral)}/>
-      <Statistics nombre="Positive" calculo={good/(good+bad+neutral)*100}/>
+      {/* Usamos el operador terneario para verificar, el ? es la consulta y el : es el ELSE */}
+      {good+neutral+bad === 0 ?
+        <Statistics nomensaje={true}/>
+      :
+        <>
+          <Statistics nombre="Good" calculo={good}/>
+          <Statistics nombre="Neutral" calculo={neutral}/>
+          <Statistics nombre="Bad" calculo={bad}/>
+          <Statistics nombre="All" calculo={good+neutral+bad}/>
+          <Statistics nombre="Average" calculo={(good-bad)/(good+bad+neutral)}/>
+          <Statistics nombre="Positive" calculo={good/(good+bad+neutral)*100}/>
+        </>
+      }
     </div>
   );
 }
