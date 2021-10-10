@@ -3,34 +3,68 @@ import ReactDOM from "react-dom";
 
 const App = (props) => {
   const [selected, setSelected] = useState(0);
-  const [vote, setVote] = useState(new Uint8Array(anecdotes.length));
-  let random;
+  const [points, setPoints] = useState(new Uint8Array(anecdotes.length));
+  const [mostvoted, setMostvoted] = useState({
+    cita: "",
+    puntaje: [],
+  });
+  // const [mostvoted, setMostvoted] = useState("")
 
   //Codigo para generar un numero aleatorio
   const aleatorio = (anecdotes) => {
     console.log("Generando numero aleatorio");
-    console.log("Largo del arreglo =>" + anecdotes.length);
-    random = Math.floor(Math.random() * anecdotes.length);
-    console.log(random);
+    //El numero aleatorio tendra por maximo valor el largo del arreglo
+    let random = Math.floor(Math.random() * anecdotes.length);
+    console.log("El numero aleatorio fue: " + random);
     setSelected(random);
   };
 
   const votacion = () => {
     console.log("Votando la anecdota");
-    console.log("Estado inicial del componente useState vote: " + vote);
-    const copyArray = [...vote];
-    console.log("Estado del spread operator de copyArray: " + copyArray);
+    console.log("Estado inicial del componente useState points: " + points);
+    //Usamos el operador spread para crear una copia del arreglo
+    const copyArray = [...points];
+    //Para comprobar que la copia es igual: console.log("Estado del spread operator de copyArray: " + copyArray);
+    //Le aumentamos la posicion exacta a esa posicion
     copyArray[selected] += 1;
-    console.log(copyArray)
-    setVote(copyArray)
+    //Valor del nuevo arreglo
+    console.log("El valor del nuevo arreglo es: " + copyArray);
+    //Aqui creo el nuevo arreglo para vote
+    setPoints(copyArray);
+
+    const auxmaxvotado= copyArray[selected];
+    const maxvotado = (mostvoted.puntaje = Math.max(...copyArray));
+
+    if (auxmaxvotado >= maxvotado) {
+      const masvotado = {
+        cita: anecdotes[selected],
+        puntaje: maxvotado,
+      };
+      console.log("valor de la cita dentro del If: "+masvotado.cita)
+      console.log("valor del puntaje dentro del If "+masvotado.puntaje)
+      setMostvoted(masvotado);
+    }
+
+    //Aqui le digo cual es el mas votado
+
+    console.log("Valor del mas votado: " + maxvotado);
+    console.log("donde estoy parado " + anecdotes[selected]);
+    console.log("coordenada de donde estoy parado:" + selected);
+    console.log("valor de donde estoy parado:" + copyArray[selected]);
+
   };
 
   return (
     <>
       <button onClick={() => aleatorio(anecdotes)}>Ver anecdota</button>
       <div>{props.anecdotes[selected]}</div>
-      <div>Puntaje: {vote[selected]}</div>
+      <div>Puntaje: {points[selected]}</div>
       <button onClick={() => votacion()}>Votar</button>
+      <h2>Most voted:</h2>
+      <div>
+        <p>Cita: {mostvoted.cita}</p>
+        <p>Puntaje: {mostvoted.puntaje}</p>
+      </div>
     </>
   );
 };
