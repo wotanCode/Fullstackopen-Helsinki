@@ -35,12 +35,12 @@ const Part = (props) => {
 //Componente para el total
 const Total = (props) => {
   return (
-    <p>
+    <b>
       Number of exercises{" "}
       {props.parts[0].exercises +
         props.parts[1].exercises +
         props.parts[2].exercises}
-    </p>
+    </b>
   );
 };
 
@@ -49,7 +49,7 @@ const Course = (props) => {
     <div>
       <Header course={props.course.name} />
       <Content parts={props.course.parts} />
-      {/* <Total parts={props.course.parts} /> */}
+      <Total parts={props.course.parts} />
     </div>
   );
 };
