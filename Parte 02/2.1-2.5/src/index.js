@@ -12,15 +12,27 @@ const Header = (props) => {
 
 //Componente para el contenido.
 const Content = (props) => {
+
+  const partes = props.parts.map(contenido => contenido)
+  console.log("el id de los props enviados es", partes)
   return (
     <>
+    {
+      partes.map((x, index) =>{
+        return(
+          <Part key={index} parts={props.parts[index]} />
+          
+        )
+      })}
+{/*Otro metodo para hacer esto seria:
       <Part parts={props.parts[0]} />
       <Part parts={props.parts[1]} />
+*/}
 
-      {props.parts[2] && (
+{/* Metodo a traves de un short circuit */}
+      {/* {props.parts[2] && (
       <Part parts={props.parts[2]} />)
-      }
-      
+*/}
     </>
   );
 };
@@ -40,10 +52,10 @@ const Part = (props) => {
 const Total = (props) => {
   //Se suma el contenido de ejericios con map
   const numejercicios = props.parts.map(total => total.exercises)
-  console.log(numejercicios)
+  //console.log(numejercicios)
   //utilizamos reduce para sumar el arreglo
   const total = numejercicios.reduce((a,b) => a+b)
-  console.log(total)
+  //console.log(total)
 
   return (
     <b>
