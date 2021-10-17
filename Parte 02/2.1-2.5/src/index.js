@@ -73,7 +73,7 @@ const Course = (props) => {
       <Total parts={props.course[0].parts} />
       <Header course={props.course[1].name} />
       <Content parts={props.course[1].parts} />
-
+      <Total parts={props.course[1].parts} />
     </div>
   );
 };
