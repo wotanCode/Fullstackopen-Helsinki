@@ -34,12 +34,16 @@ const Part = (props) => {
 
 //Componente para el total
 const Total = (props) => {
+  //Se suma el contenido de ejericios con map
+  const numejercicios = props.parts.map(total => total.exercises)
+  console.log(numejercicios)
+  //utilizamos reduce para sumar el arreglo
+  const total = numejercicios.reduce((a,b) => a+b)
+  console.log(total)
+
   return (
     <b>
-      Number of exercises{" "}
-      {props.parts[0].exercises +
-        props.parts[1].exercises +
-        props.parts[2].exercises}
+      Number of exercises {total}
     </b>
   );
 };
@@ -56,7 +60,7 @@ const Course = (props) => {
 
 const App = () => {
   const course = {
-    //id: 1,
+    id: 1,
     name: "Half Stack application development",
     parts: [
       {
