@@ -1,4 +1,4 @@
-# Fullstackopen-2021
+# Fullstackopen-2023
 Solución a los ejercicios de fullstackopen promovidos por el departamento de Ciencias de la Computación en la Universidad de Helsinki, revisión 2021
 
 
