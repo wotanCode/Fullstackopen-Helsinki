@@ -1,6 +1,5 @@
-# Fullstackopen-2023
-Solución a los ejercicios de fullstackopen promovidos por el departamento de Ciencias de la Computación en la Universidad de Helsinki, revisión 2021
-
+# Fullstackopen
+Solución a los ejercicios de fullstackopen promovidos por el departamento de Ciencias de la Computación en la Universidad de Helsinki.
 
 <table align='center'>
 <tr>
@@ -8,7 +7,7 @@ Solución a los ejercicios de fullstackopen promovidos por el departamento de Ci
     <td>❌</td>
   </tr>
   <tr>
-    <td>Parte 01</td>
+    <td>Parte 01 - Revisión 2023</td>
     <td>✅</td>
   </tr>
   <tr>
