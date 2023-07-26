@@ -12,7 +12,7 @@ Solución a los ejercicios de fullstackopen promovidos por el departamento de Ci
   </tr>
   <tr>
     <td>Parte 02</td>
-    <td>❌</td>
+    <td>✅</td>
   </tr>
   <tr>
     <td>Parte 03</td>
