@@ -11,7 +11,7 @@ Solución a los ejercicios de fullstackopen promovidos por el departamento de Ci
     <td>✅</td>
   </tr>
   <tr>
-    <td>Parte 02</td>
+    <td>Parte 02 - Revisión 2023</td>
     <td>✅</td>
   </tr>
   <tr>
